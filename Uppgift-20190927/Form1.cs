@@ -12,6 +12,7 @@ namespace Uppgift_20190927
 {
     public partial class Form1 : Form
     {
+        Calculator myCalculator = new Calculator();
         public Form1()
         {
             InitializeComponent();
@@ -21,12 +22,8 @@ namespace Uppgift_20190927
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int x = int.Parse(textBox1.Text);
-            int y = int.Parse(textBox2.Text);
-
-            int result = x + y;
-
-            listBox1.Items.Add(string.Format("{0} + {1} = {2}", x, y, result));
+            int result = myCalculator.Add(int.Parse(textBox1.Text), int.Parse(textBox2.Text));
+            listBox1.Items.Add(result);
         }
     }
 }
