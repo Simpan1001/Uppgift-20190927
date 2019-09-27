@@ -8,6 +8,8 @@ namespace CAlculator.Component
 {
     public class Class1
     {
-
+        double x = 0;
+        double y = 0;
+        string result = "";
     }
 }
