@@ -18,12 +18,32 @@ namespace Uppgift_20190927
             InitializeComponent();
 
             button1.Text = "+";
+            button2.Text = "-";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int result = myCalculator.Add(int.Parse(textBox1.Text), int.Parse(textBox2.Text));
-            listBox1.Items.Add(result);
+            string op = button1.Text;
+            int x = int.Parse(textBox1.Text);
+            int y = int.Parse(textBox2.Text);
+            int result = myCalculator.Add(x, y);
+
+            ShowResult(x, y, result, op);
+        }
+
+        private void ShowResult(int x, int y, int result, string op)
+        {
+            listBox1.Items.Add(string.Format("{0} {3} {1} = {2}", x, y, result, op));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string op = button2.Text;
+            int x = int.Parse(textBox1.Text);
+            int y = int.Parse(textBox2.Text);
+            int result = myCalculator.Sub(x, y);
+
+            ShowResult(x, y, result, op);
         }
     }
 }
