@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CAlculator.Component;
 
 namespace Uppgift_20190927
 {
     public partial class Form1 : Form
     {
-        Calculator myCalculator = new Calculator();
+        CAlculator.Component.Calculator myCalculator = new CAlculator.Component.Calculator();
         public Form1()
         {
             InitializeComponent();
@@ -23,25 +24,53 @@ namespace Uppgift_20190927
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string op = button1.Text;
-            int x = int.Parse(textBox1.Text);
-            int y = int.Parse(textBox2.Text);
-            int result = myCalculator.Add(x, y);
+            string op = ((Button)sender).Text;
+
+            double x = double.Parse(textBox1.Text);
+            double y = double.Parse(textBox2.Text);
+            double result = myCalculator.Add(x, y);
 
             ShowResult(x, y, result, op);
         }
 
-        private void ShowResult(int x, int y, int result, string op)
+        private void ShowResult(double x, double y, double result, string op)
         {
-            listBox1.Items.Add(string.Format("{0} {3} {1} = {2}", x, y, result, op));
+            listBox1.Items.Add(string.Format("{0} {1} {2} = {3}", x, op, y, result));
+            textBox1.Clear();
+            textBox2.Clear();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Button b;
+            b = (Button)sender;
             string op = button2.Text;
-            int x = int.Parse(textBox1.Text);
-            int y = int.Parse(textBox2.Text);
-            int result = myCalculator.Sub(x, y);
+
+            double x = double.Parse(textBox1.Text);
+            double y = double.Parse(textBox2.Text);
+            double result = myCalculator.Sub(x, y);
+
+            ShowResult(x, y, result, op);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string op = ((Button)sender).Text;
+
+            double x = double.Parse(textBox1.Text);
+            double y = double.Parse(textBox2.Text);
+            double result = myCalculator.Div(x, y);
+
+            ShowResult(x, y, result, op);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string op = ((Button)sender).Text;
+
+            double x = double.Parse(textBox1.Text);
+            double y = double.Parse(textBox2.Text);
+            double result = myCalculator.Div(x, y);
 
             ShowResult(x, y, result, op);
         }
